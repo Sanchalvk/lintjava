@@ -16,7 +16,11 @@ jobs:
         with: 
           java-version: 17 
           distribution: temurin 
- 
-      - name: Run Checkstyle 
-        run: | 
-          mvn clean checkstyle:checkstyle -Dcheckstyle.config.file=checkstyle.xml 
+      - name: Download Checkstyle
+        run: |
+          wget https://github.com/checkstyle/checkstyle/releases/download/checkstyle-8.45/checkstyle-8.45-all.jar -O checkstyle.jar
+          # Replace 8.45 with the actual version number you want to use
+
+      - name: Run Checkstyle
+        run: |
+          mvn clean checkstyle:checkstyle -Dcheckstyle.config.file=check
